@@ -1,0 +1,7 @@
+*.ipynb
+*.pyc
+
+res/test_images/*
+res/test_video_out.mp4
+
+data/*
