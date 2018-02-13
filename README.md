@@ -21,24 +21,40 @@ Parameters such as color space (RGB/HSV/LUV), number of bins, and number of grad
  <img src="./res/images/normalize_data.png" width=550>
 </p>
 
+The parameters that worked best were:
+
+| Parameter | Value |
+| ------------- | ------------- |
+| Color Space  | YUV  |
+| HOG Orientations  | 11  |
+| Pixels per Cell | 16 |
+| Cell per Block | 2 |
+| HOG Channel | 'ALL' |
+| Spatial Size | (16, 16) |
+| Histogram Bins | 8 |
+
 ### 1.3 Label Data Set
 With the ability to extract features from images, we need to apply labels to the images inorder to allow the classifier to categorize the images. For this project the labels are simple: '1' for car and '0' for not car. Note: ensure that the relative sizes of the data sets are fairly equal in size to ensure that the classifier will not favour one type of image over the other.
 
 ### 1.4 Build the Classifier
-The labelled data set was shuffled and 20% of the images extracted to create a training and testing set for evaluating the classifier. From the Python Scikit-Learn I used the LinearSVC.
+The labelled data set was shuffled and 20% of the images extracted to create a training and testing set for evaluating the classifier. From the Python Scikit-Learn I used the LinearSVC to fit the training data for an accuracy of 98.79%. The resulting coefficients for the model were saved using Pickle so the model could be used again at a later time without having to recompile.
 
 ## 2 Searching for Vehilces
 ### 2.1 Sliding Window Approach
-...
+Since cars only appear in specific regions of the image we can restrict our search area to reduce the search time on each frame starting at y value of 400 and scanning vertically down to ~650. Since cars will appear to be various sizes in the image depending on their position with respect to the horizon, we need to perform multiple scans at different window sizes to detect cars that are further and nearer.
 
-### 2.2 Heat Mapping
-...
+<p align="center">
+ <img src="./res/images/mask.png" width=550>
+</p>
+
+### 2.2 Heat Mapping & False Positives
+Since our classifier is not perfect there will always be the scenario where a car is detected where there is no car due to artifacts that appear similar in shape and color. To reduce the occurance of these errors we can use a technique called heat mapping, which takes a mask of all zeros and increases all elements inside the region of the bounding box by one on the detection of a car. Applying a threshold to this new heat map will eliminate any boxes with a value less than the threshold, therefore a region where multiple vehicles were detected will have higher counts (hotter) and regions where false positives occurred will have lower counts (colder).
 
 <p align="center">
  <img src="./res/images/heatmap.png" width=550>
 </p>
 
-### 2.3 Vehicle Tracking between Frames
+### 2.3 Vehicle Tracking & False Negatives
 ...
 
 ## 3 Pipeline (Image)
