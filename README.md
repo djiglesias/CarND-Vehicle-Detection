@@ -70,11 +70,11 @@ Without the Vehicle Detection class implemented, the test images provided by Uda
 Using the VideoFileClip from MoviePy Editor, the still images from the video clip were extracted and run through the pipeline to generate a new video clip. 
 
 <p align="center">
- <img src="./res/images/project_video_out.gif" width=550>
+ <img src="./res/images/detection.gif" width=550>
 </p>
 
 ## 5 Shortcomings of the Pipeline
-...
+Unfortunately, there are several shortcomings to this pipeline. Only one color space was used during feature extraction which limits the amount of information available for the classify to train on. Future revisions should include other color spaces such as RGB, HSV, ...etc. Minimal overlap was used in the window searches so the threshold for the heat map was set low due to too few windows detected per scan, however this was done to speed up the processing time for each video.
 
  
 
