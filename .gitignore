@@ -1,4 +1,3 @@
-*.ipynb
 *.pyc
 
 res/test_images/*
