@@ -61,9 +61,9 @@ Sometimes the vehicle is not detected when it is actually present or different r
 Without the Vehicle Detection class implemented, the test images provided by Udacity resulted in the following detection for single frames. 
 
 <p align="center">
- <img src="./res/images/test3.png" width=350>
- <img src="./res/images/test5.png" width=350>
- <img src="./res/images/test6.png" width=350>
+ <img src="./res/images/test3.png" width=250>
+ <img src="./res/images/test5.png" width=250>
+ <img src="./res/images/test6.png" width=250>
 </p>
 
 ## 4 Pipeline (Video)
