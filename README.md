@@ -55,18 +55,26 @@ Since our classifier is not perfect there will always be the scenario where a ca
 </p>
 
 ### 2.3 Vehicle Tracking & False Negatives
-...
+Sometimes the vehicle is not detected when it is actually present or different regions of the car are detected causing the tracking boundary to jump around between frames. In order to smooth this out and prevent false negatives a Vehicle Detection class was added to track cars on the screen by tracking a moving average of N previous frames. The average of these frames are used to apply the bounding box and track the vehicle even if it is not detected for several frames.
 
 ## 3 Pipeline (Image)
+Without the Vehicle Detection class implemented, the test images provided by Udacity resulted in the following detection for single frames. 
+
+<p align="center">
+ <img src="./res/images/test3.png" width=350>
+ <img src="./res/images/test5.png" width=350>
+ <img src="./res/images/test6.png" width=350>
+</p>
+
+## 4 Pipeline (Video)
+Using the VideoFileClip from MoviePy Editor, the still images from the video clip were extracted and run through the pipeline to generate a new video clip. 
+
+<p align="center">
+ <img src="./res/images/project_video_out.gif" width=550>
+</p>
+
+## 5 Shortcomings of the Pipeline
 ...
-
-
-## Pipeline (Video)
-...
-
-
-
-
 
  
 
